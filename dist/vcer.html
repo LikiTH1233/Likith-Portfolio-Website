@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Likith H M | Certificates & Achievements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00cf5d;
+      --primary-dark: #00a74a;
+      --primary-light: rgba(0, 207, 93, 0.1);
+      --secondary: #2d2d39;
+      --dark: #1a1a24;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Header */
+    header {
+      background: rgba(26, 26, 36, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    
+    .back-btn {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .back-btn:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 10rem 0 5rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0,207,93,0.05) 0%, rgba(26,26,36,0) 100%);
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    
+    /* Filter Controls */
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 0.7rem 1.5rem;
+      background: var(--secondary);
+      border: none;
+      border-radius: 30px;
+      color: var(--light);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #000;
+    }
+    
+    /* Certificates Grid */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2.5rem;
+      padding: 2rem 0 6rem;
+    }
+    
+    .certificate-card {
+      background: var(--secondary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .certificate-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .certificate-img {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .certificate-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .certificate-card:hover .certificate-img img {
+      transform: scale(1.05);
+    }
+    
+    .certificate-content {
+      padding: 1.8rem;
+    }
+    
+    .certificate-category {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .certificate-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .certificate-date {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    
+    .certificate-description {
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .certificate-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .view-btn, .download-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    
+    .view-btn {
+      background: var(--primary);
+      color: #000;
+    }
+    
+    .view-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .download-btn {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .download-btn:hover {
+      background: var(--primary-light);
+    }
+    
+    /* Lightbox Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+    
+    .modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .modal-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-controls {
+        gap: 0.5rem;
+      }
+      
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo">Likith<span class="text-primary">.</span></a>
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>My Certificates & Achievements</h1>
+      <p>A collection of my professional certifications, awards, and notable accomplishments throughout my career</p>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <div class="container">
+    <div class="filter-controls">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="certification">Certifications</button>
+      <button class="filter-btn" data-filter="internship">Internships</button>
+      <button class="filter-btn" data-filter="competition">Competitions</button>
+    </div>
+  </div>
+
+  <!-- Certificates Grid -->
+  <div class="container">
+    <div class="certificates-grid">
+      <!-- Certificate 1 -->
+      <div class="certificate-card" data-category="certification">
+        <div class="certificate-img">
+          <img src="3.png" alt="DevOps Certification">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Certification</span>
+          <h3 class="certificate-title">Certified DevOps Engineer</h3>
+          <span class="certificate-date">Issued: Nov 2023</span>
+          <p class="certificate-description">Certified in DevOps practices including CI/CD pipelines, Docker, Kubernetes, and AWS cloud infrastructure.</p>
+          <div class="certificate-actions">
+            <a href="3.png" class="view-btn" data-image="3.png">
+              <i class="fas fa-expand"></i> View
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificate 2 -->
+      <div class="certificate-card" data-category="certification">
+        <div class="certificate-img">
+          <img src="2.png" alt=" Competition Certification">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Award</span>
+          <h3 class="certificate-title">Digital Marketing Certification</h3>
+          <span class="certificate-date"> 2021</span>
+          <p class="certificate-description">Certified in SEO, Social Media Marketing, and Online Advertising strategies.</p>
+          <div class="certificate-actions">
+            <a href="2.png" class="view-btn" data-image="2.png">
+              <i class="fas fa-expand"></i> View
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificate 3 -->
+      <div class="certificate-card" data-category="internship">
+        <div class="certificate-img">
+          <img src="pyth.png" alt="Python Internship">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Internship</span>
+          <h3 class="certificate-title">Python Internship Completion</h3>
+          <span class="certificate-date">Completed: Oct 2023</span>
+          <p class="certificate-description">Successfully completed internship focused on advanced Python programming and data analysis.</p>
+          <div class="certificate-actions">
+            <a href="pyth.png" class="view-btn" data-image="pyth.png">
+              <i class="fas fa-expand"></i> View
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificate 4 -->
+      <div class="certificate-card" data-category="certification">
+        <div class="certificate-img">
+          <img src="1.png" alt="Full Stack Certification">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Certification</span>
+          <h3 class="certificate-title">Full Stack Development</h3>
+          <span class="certificate-date">Issued: Aug 2022</span>
+          <p class="certificate-description">Certified in Full Stack Web Development covering React, Node.js, and database management.</p>
+          <div class="certificate-actions">
+            <a href="1.png" class="view-btn" data-image="1.png">
+              <i class="fas fa-expand"></i> View
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificate 5 -->
+      <div class="certificate-card" data-category="competition">
+        <div class="certificate-img">
+          <img src="game.png" alt="E-Sports Championship">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Competition</span>
+          <h3 class="certificate-title">E-Sports Championship</h3>
+          <span class="certificate-date">Awarded: May 2021</span>
+          <p class="certificate-description">Won multiple e-sports competitions demonstrating strategic thinking and teamwork skills.</p>
+          <div class="certificate-actions">
+            <a href="game.png" class="view-btn" data-image="game.png">
+              <i class="fas fa-expand"></i> View
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificate 6 -->
+      <div class="certificate-card" data-category="internship">
+        <div class="certificate-img">
+          <img src="44.jpg" alt="Sensor Applications Internship">
+        </div>
+        <div class="certificate-content">
+          <span class="certificate-category">Internship</span>
+          <h3 class="certificate-title">Sensor Applications Internship</h3>
+          <span class="certificate-date">Completed: Nov 2022</span>
+          <p class="certificate-description">Completed internship at RV College focused on IoT and sensor applications development.</p>
+          <div class="certificate-actions">
+            <a href="44.jpg" class="view-btn" data-image="44.jpg">
+              <i class="fas fa-expand"></i> View
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="container" style="padding-bottom: 4rem; text-align: center;">
+    <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+      <i class="fas fa-home"></i> Back to Home
+    </a>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <img id="modalImage" src="" alt="Certificate Preview">
+    </div>
+  </div>
+
+  <script>
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        // Filter cards
+        certificateCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Lightbox functionality
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+    
+    viewBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const imgSrc = btn.dataset.image;
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>
